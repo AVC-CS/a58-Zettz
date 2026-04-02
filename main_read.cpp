@@ -1,27 +1,22 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 using namespace std;
-
-int main()
-{
-    int M;
-    double score1, score2, sum, avg;
-    string stuName;
+int main(){
     ifstream ifs;
-
-    // TODO: open "students.txt" for reading
-
-    // TODO: check if file opened successfully; print error and exit if not
-
-    // TODO: read M from ifs, print "Total M students"
-
-    for (int i = 0; i < M; i++)
-    {
-        // TODO: read stuName, score1, score2 from ifs
-        // TODO: compute sum = score1 + score2, avg = sum / 2.0
-        // TODO: print Student Name, score1, score2, Sum, Avg
+    string sname;
+    int score1, score2, sum, N;
+    double avg;
+    ifs.open("Students.txt");
+    if (!ifs.is_open()){
+        cerr << "Error opening file!" << endl;
+        return 1;
     }
-    ifs.close();
-    return 0;
+    ifs >> N;
+    for(int i=0; i<N; i++){
+        ifs >> sname >> score1 >> score2;
+        sum = score1 + score2;
+        avg = sum / 2.0;
+        cout << sname << " " << score1 << " " << score2 << " " << sum << " " << avg << endl;
+
+    }
 }
